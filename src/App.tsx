@@ -1,7 +1,7 @@
+import { AppLayout } from "./ui/layout/AppLayout"
+
 export const App = () => {
   return (
-    <>
-    hello world
-    </>
+    <AppLayout></AppLayout>
   )
 }
