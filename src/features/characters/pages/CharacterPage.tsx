@@ -14,9 +14,9 @@ export const CharacterPage = () => {
       <>select some one</>
     )
   }
-
+// md:w-md 
   return (
-    <div className="container w-2xl mx-auto pt-10">
+    <div className="container lg:w-2xl w-full mx-auto pt-10 px-12">
       <div className="flex relative w-fit mb-4">
         <img className="w-20 h-20 rounded-full" src={character.image} alt="Person icon" />
         <div className="absolute bottom-0 -right-3">

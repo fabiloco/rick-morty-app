@@ -9,7 +9,7 @@ export const Sidebar = () => {
   console.log(starredCharacters)
 
   return (
-    <div className="md:w-1/3 w-full h-screen overflow-auto bg-gray-50 px-6 py-12">
+    <div>
       <h2 className="text-2xl mb-8 font-bold">Rick and Morty list</h2>
 
       <SearchBar
