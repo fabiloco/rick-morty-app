@@ -1,10 +1,12 @@
-import { useQuery } from "@apollo/client";
 import { CharacterList } from "../../features/characters/characterList";
+import { useCharacters, useStarredCharacters } from "../../features/characters/store/character.store";
 import { SearchBar } from "../searchBar";
-import { GET_CHARACTERS } from "../../features/characters/queries/getCharacters";
 
 export const Sidebar = () => {
-  const { loading, error, data } = useQuery(GET_CHARACTERS);
+  const characters = useCharacters();
+  const starredCharacters = useStarredCharacters();
+
+  console.log(starredCharacters)
 
   return (
     <div className="md:w-1/3 w-full h-screen overflow-auto bg-gray-50 px-6 py-12">
@@ -14,15 +16,13 @@ export const Sidebar = () => {
         placeholder="Search or filter results"
       />
 
-      {loading && <p>Loading...</p>}
+      <h3 className="text-xs px-6 mb-8 font-semibold text-gray-500 uppercase">Starred characters ({starredCharacters.length})</h3>
 
-      <h3 className="text-xs px-6 mb-8 font-semibold text-gray-500 uppercase">Starred characters (#)</h3>
+      {characters && <CharacterList characters={starredCharacters} />}
 
-      {data && <CharacterList characters={data.characters} />}
+      <h3 className="text-xs px-6 mb-8 mt-10 font-semibold text-gray-500 uppercase">characters ({characters.length})</h3>
 
-      <h3 className="text-xs px-6 mb-8 font-semibold text-gray-500 uppercase">characters ({data.characters.length})</h3>
-
-      {data && <CharacterList characters={data.characters} />}
+      {characters && <CharacterList characters={characters} />}
     </div>
   )
 };

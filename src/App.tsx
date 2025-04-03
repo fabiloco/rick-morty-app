@@ -1,7 +1,7 @@
-import { AppLayout } from "./ui/layout/AppLayout"
+import { AppRouter } from "./router"
 
 export const App = () => {
   return (
-    <AppLayout></AppLayout>
+    <AppRouter></AppRouter>
   )
 }

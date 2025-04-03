@@ -5,10 +5,15 @@ import { App } from './App'
 import { ApolloProvider } from '@apollo/client'
 import { client } from './lib'
 
+import { BrowserRouter } from "react-router";
+
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ApolloProvider>
   </StrictMode>,
 )

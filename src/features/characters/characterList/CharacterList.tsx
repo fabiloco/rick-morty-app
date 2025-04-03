@@ -13,7 +13,7 @@ export const CharacterList: FC<CharacterListProps> = ({characters}) => {
       <ul className="flex flex-col gap-1">
         {characters.map((character: any) => (
           <>
-            <div className="bg-gray-200 w-full h-0.5"/>
+            <div className="bg-gray-200 w-full h-[1px]"/>
             <CharacterCard key={character.id} character={character} />
           </>
         ))}
