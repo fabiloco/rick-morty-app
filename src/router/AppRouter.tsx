@@ -1,26 +1,10 @@
 import { Route, Routes } from "react-router"
 import { AppLayout } from "../ui"
 import { CharacterPage } from "../features/characters/pages"
-import { useFetchCharacters } from "../features/characters/hooks/useFetchCharacters";
+import { useFetchCharactersByFilter } from "../features/characters/hooks/useFetchCharactersByFilter";
 
 export const AppRouter = () => {
-  const { loading, error } = useFetchCharacters();
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen w-screen">
-        Error fetching characters data
-      </div>
-    )
-  }
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen w-screen">
-        Loading...
-      </div>
-    )
-  }
+  useFetchCharactersByFilter();
 
   return (
     <Routes>
