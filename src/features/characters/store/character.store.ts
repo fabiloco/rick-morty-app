@@ -8,6 +8,8 @@ interface CharacterState {
   setCharacters: (characters: Character[]) => void;
   toggleStarredCharacter: (character: Character) => void;
   getCharacterById: (id: number) => Character | null;
+  sortCharactersByNameAsc: () => void;
+  sortCharactersByNameDesc: () => void;
 }
 
 const useCharacterStore = create(
@@ -15,6 +17,7 @@ const useCharacterStore = create(
     (set, get) => ({
       characters: [],
       starredCharacters: [],
+
       setCharacters: (characters) =>
         set({ characters }),
 
@@ -30,12 +33,27 @@ const useCharacterStore = create(
 
       getCharacterById: (id: number) =>
         get().characters.find((char) => char.id === id) || null,
+
+      sortCharactersByNameAsc: () =>
+        set((state) => ({
+          characters: [...state.characters].sort((a, b) =>
+            a.name.localeCompare(b.name)
+          ),
+        })),
+
+      sortCharactersByNameDesc: () =>
+        set((state) => ({
+          characters: [...state.characters].sort((a, b) =>
+            b.name.localeCompare(a.name)
+          ),
+        })),
     }),
     {
       name: "character-store",
     }
   )
 );
+
 
 export const useCharacters = () =>
   useCharacterStore((state) => state.characters);
@@ -51,3 +69,9 @@ export const useToggleStarredCharacter = () =>
 
 export const useCharacterById = (id: number) =>
   useCharacterStore((state) => state.getCharacterById(id));
+
+export const useSortCharactersAsc = () =>
+  useCharacterStore((state) => state.sortCharactersByNameAsc);
+
+export const useSortCharactersDesc = () =>
+  useCharacterStore((state) => state.sortCharactersByNameDesc);

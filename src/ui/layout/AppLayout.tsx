@@ -1,6 +1,7 @@
+import { FC } from "react";
+
 import { Outlet, useParams } from "react-router";
 import { Sidebar } from "../sidebar"
-import { FC } from "react";
 
 export type AppLayoutProps = {
   isMd: boolean;

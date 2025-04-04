@@ -17,8 +17,6 @@ export const useFetchCharactersByFilter = () => {
         .reduce((acc, [k, v]) => ({ ...acc, [k]: v ?? undefined }), {})
     : {};
 
-  // console.log({parsedFilters})
-
   const { data, loading, error } = useQuery(GET_CHARACTERS_BY_FILTER, {
     variables: parsedFilters,
   });

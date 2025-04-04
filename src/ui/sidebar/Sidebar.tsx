@@ -1,9 +1,12 @@
+import { useState } from "react";
+
 import { CharacterList } from "../../features/characters/characterList";
-import { useCharacters, useStarredCharacters } from "../../features/characters/store/character.store";
-import { useFilterStore, useResetFilters, useSelectedFilters } from "../../features/filters/store/filter.store";
+import { useCharacters, useSortCharactersAsc, useSortCharactersDesc, useStarredCharacters } from "../../features/characters/store/character.store";
+import { useResetFilters, useSelectedFilters } from "../../features/filters/store/filter.store";
 import { SearchBar } from "../searchBar";
 
 import closeIcon from "../../assets/close.svg";
+import sortIcon from "../../assets/sort.svg";
 
 export const Sidebar = () => {
   const characters = useCharacters();
@@ -12,10 +15,33 @@ export const Sidebar = () => {
   const filters = useSelectedFilters();
   const resetFilters = useResetFilters();
 
+  const [sorted, setSorted] = useState(false);
+
   const filterArray = Object.entries(filters).map(([key, value]) => {
     if (value === null) return null;
     return { [key]: value };
   });
+
+  const sortCharactersAsc = useSortCharactersAsc();
+  const sortCharactersDesc = useSortCharactersDesc();
+
+  const toggleSort = () => {
+    if (sorted) {
+      sortCharactersAsc();
+    } else {
+      sortCharactersDesc();
+    }
+    setSorted(!sorted);
+  }
+
+  const sortButton = () => (
+      <button
+        className={`hover:cursor-pointer ${!sorted && "bg-primary-100"} hover:bg-primary-100 w-9 h-9 flex justify-center items-center rounded-lg`}
+        onClick={toggleSort}
+      >
+        <img src={sortIcon} alt="Options icon" />
+      </button>
+  )
 
   return (
     <div>
@@ -45,7 +71,11 @@ export const Sidebar = () => {
 
       {characters && <CharacterList characters={starredCharacters} />}
 
-      <h3 className="text-xs px-6 mb-8 mt-10 font-semibold text-gray-500 uppercase">characters ({characters.length})</h3>
+
+      <div className="flex justify-between items-center">
+        <h3 className="text-xs px-6 mb-8 mt-10 font-semibold text-gray-500 uppercase">characters ({characters.length})</h3>
+        {sortButton()}
+      </div>
 
       {characters && <CharacterList characters={characters} />}
     </div>
