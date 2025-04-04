@@ -5,10 +5,6 @@ import { FilterModal } from '../filterModal';
 export const FilterButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const onClick = () => {
-
-  }
-
   return (
     <div >
       <button

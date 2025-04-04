@@ -34,7 +34,7 @@ export const CharacterComments: React.FC<CharacterCommentsProps> = ({ characterI
         placeholder="Write a comment..."
       />
       <button
-        className="mt-2 bg-primary-100 text-primary-600 px-4 py-2 rounded disabled:opacity-50 hover:text-primary-700 hover:cursor-pointer"
+        className="mt-2 bg-primary-100 text-primary-600 px-4 py-2 rounded-lg disabled:opacity-50 hover:text-primary-700 hover:cursor-pointer"
         onClick={handleAddComment}
         disabled={loading}
       >

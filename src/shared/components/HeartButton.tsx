@@ -24,11 +24,11 @@ export const HeartButton: FC<HeartButtonProps> = ({
   }
   
   return (
-    <button 
+    <div 
       className="bg-white w-8 h-8 p-1 rounded-full flex align-bottom items-center justify-center cursor-pointer transition-all duration-300 ease-in-out"
       onClick={onClick}
     >
       <img className='w-full h-full' src={heartIcon} alt="heart" />
-    </button>
+    </div>
   )
 }

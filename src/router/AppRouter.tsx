@@ -9,6 +9,7 @@ export const AppRouter = () => {
 
   const isMd = useIsMdScreen();
 
+
   return (
     <Routes>
       <Route element={<AppLayout isMd={isMd} />}>

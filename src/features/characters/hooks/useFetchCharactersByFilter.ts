@@ -11,7 +11,7 @@ export const useFetchCharactersByFilter = () => {
 
   const parsedFilters = hasActiveFilters
     ? Object.entries(selectedFilters)
-        .filter(([_, v]) => v !== null)
+        .filter(([_, value]) => value !== null || value !== undefined || value !== "")
         .reduce((acc, [k, v]) => ({ ...acc, [k]: v ?? undefined }), {})
     : {};
 
@@ -19,7 +19,7 @@ export const useFetchCharactersByFilter = () => {
     variables: parsedFilters,
   });
 
-  console.log(data)
+  console.log(parsedFilters)
 
   const setCharacters = useSetCharacters();
 

@@ -18,9 +18,10 @@ export const Sidebar = () => {
   const [sorted, setSorted] = useState(false);
 
   const filterArray = Object.entries(filters).map(([key, value]) => {
+    if (key === "name") return null;
     if (value === null) return null;
     return { [key]: value };
-  });
+  }).filter(Boolean);
 
   const sortCharactersAsc = useSortCharactersAsc();
   const sortCharactersDesc = useSortCharactersDesc();
