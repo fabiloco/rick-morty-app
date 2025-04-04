@@ -21,7 +21,7 @@ export const CharacterCard: FC<CharacterCardProps> = ({character}) => {
   return (
     <li>
       <button 
-        className={`focus-within:bg-primary-100 w-full h-[74px] flex rounded-lg px-5 py-4 gap-5 items-center`}
+        className={`focus-within:bg-primary-100 w-full h-[74px] flex rounded-lg px-5 py-4 gap-5 items-center hover:cursor-pointer`}
         onClick={onClick}
       >
         <img className="w-8 h-8 rounded-full" src={character.image} alt="Person icon" />
