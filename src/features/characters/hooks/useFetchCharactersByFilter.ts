@@ -19,8 +19,6 @@ export const useFetchCharactersByFilter = () => {
     variables: parsedFilters,
   });
 
-  console.log(parsedFilters)
-
   const setCharacters = useSetCharacters();
 
   useEffect(() => {
