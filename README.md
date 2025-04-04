@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+# rick-morty-app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web para acceder a los datos de los personajes de Rick y Morty. Esta aplicación esta hecha en conjunto con [este servicio API](https://github.com/fabiloco/rick-morty-api) en GraphQL.
 
-Currently, two official plugins are available:
+Tecnologias usadas:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ReactJS
+- React Router v6
+- GraphQL (ApolloClient)
+- Tailwind
+- Typescript
 
-## Expanding the ESLint configuration
+### Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+El aplicativo permite la visualización de los personajes de la serie, sus datos, y además permite al usuario dejar comentarios en ellos y marcarlos como favortios.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+![Foto de la app](./imgs/app.png)
+
+También se cuenta con un sistema de filtrado y busqueda, para encontrar personajes.
+
+![Foto de la app](./imgs/app2.png)
+
+
+## Pasos para correr el proyecto
+
+Antes que nada, se debe agregar el archivo `.env` y agregar a este una variable de entorno, que será la ruta de la API de GraphQL mencionada.
+
+```
+VITE_API_URL=http://localhost:4000/graphql
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Luego, se pueden instalar las dependencias:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```
+pnpm i
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Y finalmente, ejectar el proyecto de desarrollo
+
+```
+pnpm run dev
 ```
