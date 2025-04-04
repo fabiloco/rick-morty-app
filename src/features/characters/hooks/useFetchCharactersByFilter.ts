@@ -7,8 +7,6 @@ import { GET_CHARACTERS_BY_FILTER } from "../queries/getCharactersByFilter";
 export const useFetchCharactersByFilter = () => {
   const selectedFilters = useSelectedFilters();
 
-  console.log({selectedFilters})
-
   const hasActiveFilters = Object.values(selectedFilters).some((v) => v !== null);
 
   const parsedFilters = hasActiveFilters
@@ -20,6 +18,8 @@ export const useFetchCharactersByFilter = () => {
   const { data, loading, error } = useQuery(GET_CHARACTERS_BY_FILTER, {
     variables: parsedFilters,
   });
+
+  console.log(data)
 
   const setCharacters = useSetCharacters();
 

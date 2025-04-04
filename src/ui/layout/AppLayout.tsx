@@ -18,7 +18,7 @@ export const AppLayout: FC<AppLayoutProps> = ({ isMd }) => {
       <nav className="md:w-[400px] w-full h-screen overflow-auto bg-gray-50 px-6 py-12">
         <Sidebar />
       </nav>
-      <main className={`lg:block md:block flex-1 h-full bg-white ${showMobile ? showMobileStyles : "hidden"}`}>
+      <main className={`lg:block md:block flex-1 h-screen overflow-auto bg-white ${showMobile ? showMobileStyles : "hidden"}`}>
         <Outlet/>
       </main>
     </div>

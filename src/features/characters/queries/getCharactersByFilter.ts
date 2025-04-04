@@ -10,6 +10,11 @@ export const GET_CHARACTERS_BY_FILTER = gql`
       gender
       origin
       image
+      comments {
+        id
+        characterId
+        text
+      }
     }
   }
 `;

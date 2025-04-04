@@ -6,6 +6,7 @@ import { InfoCard } from "../infoCard";
 import arrowBack from '../../../assets/arrow_back.svg';
 
 import { FC } from "react";
+import { CharacterComments } from "../characterComments";
 
 export type CharacterPageProps = {
   isMd: boolean;
@@ -63,6 +64,8 @@ export const CharacterPage: FC<CharacterPageProps> = ({isMd}) => {
         title="Location"
         content={character.origin}
       />
+
+      <CharacterComments characterId={character.id} comments={character.comments} />
     </div>
   )
 };
